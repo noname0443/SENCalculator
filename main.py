@@ -2,7 +2,7 @@ import prime
 
 def main():
     value = input("Print your number: ")
-    print(prime.IsPrime(int(value)))
+    print(prime.is_prime(int(value)))
 
 if __name__ == "__main__":
     main()

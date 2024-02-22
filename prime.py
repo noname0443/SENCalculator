@@ -1,4 +1,4 @@
-def IsPrime(value):
+def is_prime(value):
     if value <= 1:
         return False
     for i in range(2, value):
