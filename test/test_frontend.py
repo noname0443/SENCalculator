@@ -6,10 +6,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
 def getWebsiteHandler():
-    options = webdriver.FirefoxOptions()
-    options.headless = True
-    driver = webdriver.Firefox(options=options)
-    driver.get("http://127.0.0.1")
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.get("http://127.0.0.1:3433")
+    driver.implicitly_wait(20)
     return driver
 
 class TestInBrowser(unittest.TestCase):

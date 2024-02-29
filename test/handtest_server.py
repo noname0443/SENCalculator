@@ -16,7 +16,7 @@ async def ProcessRequests(websocket, path):
 def WSCallback():
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-    ws_server = websockets.serve(ProcessRequests, '0.0.0.0', 444)
+    ws_server = websockets.serve(ProcessRequests, '0.0.0.0', 31234)
 
     loop.run_until_complete(ws_server)
     loop.run_forever()
@@ -32,6 +32,6 @@ def RunThreads():
     WSServer = threading.Thread(target=WSCallback, daemon=True)
     WSServer.start()
 
-    HTTPServer = ThreadingHTTPServer(("127.0.0.1", 80), Handler)
+    HTTPServer = ThreadingHTTPServer(("127.0.0.1", 3433), Handler)
     HTTPServer = threading.Thread(target=HTTPServer.serve_forever, daemon=True)
     HTTPServer.start()
