@@ -3,9 +3,12 @@ from selenium.webdriver.common.keys import Keys
 import handtest_server
 import unittest
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 
 def getWebsiteHandler():
-    driver = webdriver.Firefox()
+    options = webdriver.FirefoxOptions()
+    options.headless = True
+    driver = webdriver.Firefox(options=options)
     driver.get("http://127.0.0.1")
     return driver
 
