@@ -24,7 +24,8 @@ def WSCallback():
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
-        dir_path = os.path.dirname(os.path.realpath(__file__))
+        dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/static"
+        print(dir_path)
         super().__init__(*args, directory=dir_path, **kwargs)
 
 def RunThreads():
