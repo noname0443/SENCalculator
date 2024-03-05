@@ -1,8 +1,8 @@
-import prime
+import app
+import evaluator
 
 def main():
-    value = input("Print your number: ")
-    print(prime.is_prime(int(value)))
+    app.StartServers(evaluator.SimpleEvaluator(), httpPort=80, websocketPort=31234)
 
 if __name__ == "__main__":
     main()
