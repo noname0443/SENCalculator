@@ -2,7 +2,7 @@ import app
 import evaluator
 
 def main():
-    app.StartServers(evaluator.SimpleEvaluator(), httpPort=80, websocketPort=31234)
+    app.start_servers(evaluator.SimpleEvaluator(), http_port=80, websocket_port=31234)
 
 if __name__ == "__main__":
     main()

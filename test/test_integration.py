@@ -1,17 +1,17 @@
+import threading
+import unittest
 import sys
 
 sys.path.append('../')
 
-import app
-import threading
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-import unittest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+
+import app
 import evaluator
 
-def getWebsiteHandler():
+def get_website_handler():
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     driver = webdriver.Chrome(options=chrome_options)
@@ -21,16 +21,22 @@ def getWebsiteHandler():
 
 class TestApp(unittest.TestCase):
     def __init__(self, arg):
-        threading.Thread(target=app.StartServers, args=(evaluator.SimpleEvaluator(), 3433, 31234,), daemon=True).start()
+        threading.Thread(
+            target=app.start_servers,
+            args=(evaluator.SimpleEvaluator(),
+            3433,
+            31234,
+        ), daemon=True).start()
+
         super().__init__(arg)
 
     def test_click(self):
-        driver = getWebsiteHandler()
+        driver = get_website_handler()
 
         button = driver.find_element(By.ID, 'calculate')
         text_input = driver.find_element(By.ID, 'expression')
 
-        testCases = [
+        test_cases = [
             ["5+5", "10"],
             ["5*5", "25"],
             ["5-4", "1"],
@@ -40,9 +46,9 @@ class TestApp(unittest.TestCase):
         ]
 
         item_id = 0
-        for testCase in testCases:
-            expression = testCase[0]
-            answer = testCase[1]
+        for test_case in test_cases:
+            expression = test_case[0]
+            answer = test_case[1]
 
             text_input.clear()
             text_input.send_keys(expression)
