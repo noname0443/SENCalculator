@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 200px;
+      padding: 5px;
+    }
+
+    button[type="submit"] {
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    h2 {
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+  </style>
+  <script src="calculator.js"></script>
+</head>
+<body>
+  <h1>Web Calculator</h1>
+
+  <form id="calculator-form">
+    <label for="expression">Math Expression:</label>
+    <input type="text" id="expression" name="expression" required>
+    <button type="submit" id="calculate">Calculate</button>
+  </form>
+
+  <h2>Expression History:</h2>
+  <ul id="history-list"></ul>
+
+  <script>
+    var commandId = 0;
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('calculator-form');
+      var expressionInput = document.getElementById('expression');
+      var historyList = document.getElementById('history-list');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var expression = expressionInput.value;
+
+        let evaluateExpression = function(msgevent) {
+            let value = msgevent.data;
+            
+            let li = document.createElement("li");
+            li.id = `${commandId}`;
+            li.append(`${expression} = ${value}`)
+            historyList.prepend(li)
+
+            commandId += 1;
+        };
+        SendString(expression, window.location.hostname, evaluateExpression)
+      });
+    });
+  </script>
+</body>
+</html>
