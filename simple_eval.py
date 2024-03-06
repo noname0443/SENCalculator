@@ -2,7 +2,7 @@ import ast
 import operator as op
 
 operators = {ast.Add: op.add, ast.Sub: op.sub, ast.Mult: op.mul,
-             ast.Div: op.floordiv, ast.USub: op.neg}
+             ast.Div: op.floordiv, ast.USub: op.neg, ast.Pow: op.pow}
 
 def eval_expr(expr):
     return eval_(ast.parse(expr, mode='eval').body)
