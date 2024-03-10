@@ -24,4 +24,4 @@ git clone https://github.com/noname0443/SENCalculator.git
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
-Then you can run the program with the command ```python main.py```.
+Then you can run the program with the command ```python main.py``` and visit the website at the address ```127.0.0.1:80```.
