@@ -21,6 +21,7 @@ The calculator is attached to the website. The user needs to visit it and enter 
 You can install the program with dependencies by entering the following commands:
 ```
 git clone https://github.com/noname0443/SENCalculator.git
+cd SENCalculator
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
